@@ -1,19 +1,25 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import {KTSVG, toAbsoluteUrl} from '../../../helpers'
+import {useSelector} from 'react-redux'
 
 type Props = {
   className: string
 }
 
 const TablesWidget10: React.FC<Props> = ({className}) => {
+  const {lang} = useSelector((state: any) => state.language)
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Members Statistics</span>
-          <span className='text-muted mt-1 fw-bold fs-7'>Over 500 members</span>
+          <span className='card-label fw-bolder fs-3 mb-1'>
+            {lang === 'ar' ? 'إحصائيات الأعضاء' : 'Members Statistics'}
+          </span>
+          <span className='text-muted mt-1 fw-bold fs-7'>
+            {lang === 'ar' ? 'أكثر من 500 عضو' : 'Over 500 members'}
+          </span>
         </h3>
         <div
           className='card-toolbar'
@@ -29,7 +35,7 @@ const TablesWidget10: React.FC<Props> = ({className}) => {
             // data-bs-target='#kt_modal_invite_friends'
           >
             <KTSVG path='media/icons/duotune/arrows/arr075.svg' className='svg-icon-3' />
-            New Member
+            {lang === 'ar' ? 'عضو جديد' : 'New Meber'}
           </a>
         </div>
       </div>
@@ -54,10 +60,10 @@ const TablesWidget10: React.FC<Props> = ({className}) => {
                     />
                   </div>
                 </th>
-                <th className='min-w-150px'>Authors</th>
-                <th className='min-w-140px'>Company</th>
-                <th className='min-w-120px'>Progress</th>
-                <th className='min-w-100px text-end'>Actions</th>
+                <th className='min-w-150px'>{lang === 'ar' ? 'المؤلفين' : 'Authors'}</th>
+                <th className='min-w-140px'>{lang === 'ar' ? 'الشركة' : 'Company'}</th>
+                <th className='min-w-120px'> {lang === 'ar' ? 'التقدم' : 'Progress'}</th>
+                <th className='min-w-100px text-end'> {lang === 'ar' ? 'الإجراءات' : 'Actions'}</th>
               </tr>
             </thead>
             {/* end::Table head */}

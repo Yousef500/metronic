@@ -2,6 +2,8 @@
 import React from 'react'
 import {KTSVG, toAbsoluteUrl} from '../../../helpers'
 import {Dropdown1} from '../../content/dropdown/Dropdown1'
+import {useSelector} from 'react-redux'
+
 
 type Props = {
   className: string
@@ -9,12 +11,14 @@ type Props = {
 }
 
 const ListsWidget4: React.FC<Props> = ({className, items = 6}) => {
+  const {lang} = useSelector((state: any) => state.language)
+
   return (
     <div className='card card-xl-stretch mb-xl-8'>
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder text-dark'>Trends</span>
+          <span className='card-label fw-bolder text-dark'>{lang === 'ar' ? 'التوجهات الحديثة' : 'Trends'}</span>
           <span className='text-muted mt-1 fw-bold fs-7'>Latest tech trends</span>
         </h3>
         <div className='card-toolbar'>

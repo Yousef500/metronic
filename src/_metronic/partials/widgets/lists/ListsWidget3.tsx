@@ -2,17 +2,23 @@
 import React from 'react'
 import {KTSVG} from '../../../helpers'
 import {Dropdown1} from '../../content/dropdown/Dropdown1'
+import { useSelector } from 'react-redux'
+
 
 type Props = {
   className: string
 }
 
 const ListsWidget3: React.FC<Props> = ({className}) => {
+  const {lang} = useSelector((state: any) => state.language)
+
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
       <div className='card-header border-0'>
-        <h3 className='card-title fw-bolder text-dark'>Todo</h3>
+        <h3 className='card-title fw-bolder text-dark'>
+        {lang === 'ar' ? 'قائمة الأعمال اليومية' : 'Todo'}
+        </h3>
         <div className='card-toolbar'>
           {/* begin::Menu */}
           <button

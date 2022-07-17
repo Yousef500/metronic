@@ -1,19 +1,26 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import {KTSVG, toAbsoluteUrl} from '../../../helpers'
+import {useSelector} from 'react-redux'
 
 type Props = {
   className: string
 }
 
 const TablesWidget5: React.FC<Props> = ({className}) => {
+  const {lang} = useSelector((state: any) => state.language)
+
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
         <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Latest Products</span>
-          <span className='text-muted mt-1 fw-bold fs-7'>More than 400 new products</span>
+          <span className='card-label fw-bolder fs-3 mb-1'>
+            {lang === 'ar' ? 'أحدث المنتجات' : 'Latest Products'}
+          </span>
+          <span className='text-muted mt-1 fw-bold fs-7'>
+            {lang === 'ar' ? 'أكثر من 400 منتج جديد' : 'More than 400 new products'}
+          </span>
         </h3>
         <div className='card-toolbar'>
           <ul className='nav'>
@@ -23,7 +30,7 @@ const TablesWidget5: React.FC<Props> = ({className}) => {
                 data-bs-toggle='tab'
                 href='#kt_table_widget_5_tab_1'
               >
-                Month
+                {lang === 'ar' ? 'شهر' : 'Month'}
               </a>
             </li>
             <li className='nav-item'>
@@ -32,7 +39,7 @@ const TablesWidget5: React.FC<Props> = ({className}) => {
                 data-bs-toggle='tab'
                 href='#kt_table_widget_5_tab_2'
               >
-                Week
+                {lang === 'ar' ? 'أسبوع' : 'Week'}
               </a>
             </li>
             <li className='nav-item'>
@@ -41,7 +48,7 @@ const TablesWidget5: React.FC<Props> = ({className}) => {
                 data-bs-toggle='tab'
                 href='#kt_table_widget_5_tab_3'
               >
-                Day
+                {lang === 'ar' ? 'يوم' : 'Day'}
               </a>
             </li>
           </ul>

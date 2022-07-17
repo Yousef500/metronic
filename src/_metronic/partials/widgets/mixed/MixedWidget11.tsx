@@ -2,6 +2,7 @@
 import React, {useEffect, useRef} from 'react'
 import ApexCharts, {ApexOptions} from 'apexcharts'
 import {getCSSVariableValue} from '../../../assets/ts/_utils'
+import { useSelector } from 'react-redux'
 
 type Props = {
   className: string
@@ -10,6 +11,8 @@ type Props = {
 }
 
 const MixedWidget11: React.FC<Props> = ({className, chartColor, chartHeight}) => {
+  const {lang} = useSelector((state: any) => state.language)
+
   const chartRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -37,7 +40,7 @@ const MixedWidget11: React.FC<Props> = ({className, chartColor, chartHeight}) =>
         {/* begin::Hidden */}
         <div className='d-flex flex-stack flex-wrap flex-grow-1 px-9 pt-9 pb-3'>
           <div className='me-2'>
-            <span className='fw-bolder text-gray-800 d-block fs-3'>Sales</span>
+            <span className='fw-bolder text-gray-800 d-block fs-3'>{lang === 'ar' ? 'مبيعات' : 'Sales'}</span>
 
             <span className='text-gray-400 fw-bold'>Oct 8 - Oct 26 2021</span>
           </div>

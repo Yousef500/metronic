@@ -4,6 +4,7 @@ import ApexCharts, {ApexOptions} from 'apexcharts'
 import {KTSVG, toAbsoluteUrl} from '../../../helpers'
 import {getCSSVariableValue} from '../../../assets/ts/_utils'
 import {Dropdown1} from '../../content/dropdown/Dropdown1'
+import {useSelector} from 'react-redux'
 
 type Props = {
   className: string
@@ -12,6 +13,8 @@ type Props = {
 }
 
 const MixedWidget8: React.FC<Props> = ({className, chartColor, chartHeight}) => {
+  const {lang} = useSelector((state: any) => state.language)
+
   const chartRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -37,9 +40,13 @@ const MixedWidget8: React.FC<Props> = ({className, chartColor, chartHeight}) => 
       {/* begin::Beader */}
       <div className='card-header border-0 py-5'>
         <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bolder fs-3 mb-1'>Trends</span>
+          <span className='card-label fw-bolder fs-3 mb-1'>
+            {lang === 'ar' ? 'التوجهات الحديثة' : 'Trends'}
+          </span>
 
-          <span className='text-muted fw-bold fs-7'>Latest trends</span>
+          <span className='text-muted fw-bold fs-7'>
+            {lang === 'ar' ? 'أحدث التوجهات' : 'Latest trends'}
+          </span>
         </h3>
 
         <div className='card-toolbar'>

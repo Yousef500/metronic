@@ -4,6 +4,7 @@ import ApexCharts, {ApexOptions} from 'apexcharts'
 import {KTSVG} from '../../../helpers'
 import {getCSSVariableValue} from '../../../assets/ts/_utils'
 import {Dropdown1} from '../../content/dropdown/Dropdown1'
+import {useSelector} from 'react-redux'
 
 type Props = {
   className: string
@@ -14,6 +15,7 @@ type Props = {
 
 const MixedWidget2: React.FC<Props> = ({className, chartColor, chartHeight, strokeColor}) => {
   const chartRef = useRef<HTMLDivElement | null>(null)
+  const {lang} = useSelector((state: any) => state.language)
 
   useEffect(() => {
     if (!chartRef.current) {
@@ -40,7 +42,9 @@ const MixedWidget2: React.FC<Props> = ({className, chartColor, chartHeight, stro
     <div className={`card ${className}`}>
       {/* begin::Header */}
       <div className={`card-header border-0 py-5 bg-${chartColor}`}>
-        <h3 className='card-title fw-bolder text-white'>Sales Statistics</h3>
+        <h3 className='card-title fw-bolder text-white'>
+          {lang === 'ar' ? 'احصائيات المبيعات' : 'Sales Statistics'}
+        </h3>
         <div className='card-toolbar'>
           {/* begin::Menu */}
           <button
@@ -76,7 +80,7 @@ const MixedWidget2: React.FC<Props> = ({className, chartColor, chartHeight, stro
                 className='svg-icon-3x svg-icon-warning d-block my-2'
               />
               <a href='#' className='text-warning fw-bold fs-6'>
-                Weekly Sales
+              {lang === 'ar' ? 'المبيعات الأسبوعية' : 'Weekly Sales'}
               </a>
             </div>
             {/* end::Col */}
@@ -87,7 +91,7 @@ const MixedWidget2: React.FC<Props> = ({className, chartColor, chartHeight, stro
                 className='svg-icon-3x svg-icon-primary d-block my-2'
               />
               <a href='#' className='text-primary fw-bold fs-6'>
-                New Users
+              {lang === 'ar' ? 'المستخدمين الجدد' : 'New Users'}
               </a>
             </div>
             {/* end::Col */}
@@ -102,7 +106,7 @@ const MixedWidget2: React.FC<Props> = ({className, chartColor, chartHeight, stro
                 className='svg-icon-3x svg-icon-danger d-block my-2'
               />
               <a href='#' className='text-danger fw-bold fs-6 mt-2'>
-                Item Orders
+              {lang === 'ar' ? 'طلبات المنتجات' : 'Item Orders'}
               </a>
             </div>
             {/* end::Col */}
@@ -113,7 +117,8 @@ const MixedWidget2: React.FC<Props> = ({className, chartColor, chartHeight, stro
                 className='svg-icon-3x svg-icon-success d-block my-2'
               />
               <a href='#' className='text-success fw-bold fs-6 mt-2'>
-                Bug Reports
+              {lang === 'ar' ? 'تقارير الأخطاء' : 'Bug Reports'}
+
               </a>
             </div>
             {/* end::Col */}
