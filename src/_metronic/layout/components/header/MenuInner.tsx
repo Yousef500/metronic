@@ -1,24 +1,29 @@
-import React from 'react'
-import {MenuItem} from './MenuItem'
-import {MenuInnerWithSub} from './MenuInnerWithSub'
-import {MegaMenu} from './MegaMenu'
 import {useIntl} from 'react-intl'
+import {useSelector} from 'react-redux'
+import {MegaMenu} from './MegaMenu'
+import {MenuInnerWithSub} from './MenuInnerWithSub'
+import {MenuItem} from './MenuItem'
 
 export function MenuInner() {
+  const {lang} = useSelector((state: any) => state.language)
+
   const intl = useIntl()
   return (
     <>
-      <MenuItem title={intl.formatMessage({id: 'MENU.DASHBOARD'})} to='/dashboard' />
-      <MenuItem title='Layout Builder' to='/builder' />
+      <MenuItem
+        title={lang === 'ar' ? 'لوحة المعلومات' : intl.formatMessage({id: 'MENU.DASHBOARD'})}
+        to='/dashboard'
+      />
+      <MenuItem title={lang === 'ar' ? 'منشيء التنسيق' : 'Layout Builder'} to='/builder' />
       <MenuInnerWithSub
-        title='Crafted'
+        title={lang === 'ar' ? 'المكونات الجاهزة' : 'Crafted'}
         to='/crafted'
         menuPlacement='bottom-start'
         menuTrigger='click'
       >
         {/* PAGES */}
         <MenuInnerWithSub
-          title='Pages'
+          title={lang === 'ar' ? 'الصفحات' : 'Pages'}
           to='/crafted/pages'
           fontIcon='bi-archive'
           hasArrow={true}
@@ -26,104 +31,185 @@ export function MenuInner() {
           menuTrigger={`{default:'click', lg: 'hover'}`}
         >
           <MenuInnerWithSub
-            title='Profile'
+            title={lang === 'ar' ? 'الملف الشخصي' : 'Profile'}
             to='/crafted/pages/profile'
             hasArrow={true}
             hasBullet={true}
             menuPlacement='right-start'
             menuTrigger={`{default:'click', lg: 'hover'}`}
           >
-            <MenuItem to='/crafted/pages/profile/overview' title='Overview' hasBullet={true} />
-            <MenuItem to='/crafted/pages/profile/projects' title='Projects' hasBullet={true} />
-            <MenuItem to='/crafted/pages/profile/campaigns' title='Campaigns' hasBullet={true} />
-            <MenuItem to='/crafted/pages/profile/documents' title='Documents' hasBullet={true} />
+            <MenuItem
+              to='/crafted/pages/profile/overview'
+              title={lang === 'ar' ? 'نظرة عامة' : 'Overview'}
+              hasBullet={true}
+            />
+            <MenuItem
+              to='/crafted/pages/profile/projects'
+              title={lang === 'ar' ? 'المشاريع' : 'Projects'}
+              hasBullet={true}
+            />
+            <MenuItem
+              to='/crafted/pages/profile/campaigns'
+              title={lang === 'ar' ? 'الحملات' : 'Campaigns'}
+              hasBullet={true}
+            />
+            <MenuItem
+              to='/crafted/pages/profile/documents'
+              title={lang === 'ar' ? 'الوثائق' : 'Documents'}
+              hasBullet={true}
+            />
             <MenuItem
               to='/crafted/pages/profile/connections'
-              title='Connections'
+              title={lang === 'ar' ? 'الارتباطات' : 'Connections'}
               hasBullet={true}
             />
           </MenuInnerWithSub>
           <MenuInnerWithSub
-            title='Wizards'
+            title={lang === 'ar' ? 'المساعدين' : 'Wizards'}
             to='/crafted/pages/wizards'
             hasArrow={true}
             hasBullet={true}
             menuPlacement='right-start'
             menuTrigger={`{default:'click', lg: 'hover'}`}
           >
-            <MenuItem to='/crafted/pages/wizards/horizontal' title='Horizontal' hasBullet={true} />
-            <MenuItem to='/crafted/pages/wizards/vertical' title='Vertical' hasBullet={true} />
+            <MenuItem
+              to='/crafted/pages/wizards/horizontal'
+              title={lang === 'ar' ? 'أفقي' : 'Horizontal'}
+              hasBullet={true}
+            />
+            <MenuItem
+              to='/crafted/pages/wizards/vertical'
+              title={lang === 'ar' ? 'عمودي' : 'Vertical'}
+              hasBullet={true}
+            />
           </MenuInnerWithSub>
         </MenuInnerWithSub>
 
         {/* ACCOUNT */}
         <MenuInnerWithSub
-          title='Accounts'
+          title={lang === 'ar' ? 'الحسابات' : 'Accounts'}
           to='/crafted/accounts'
           fontIcon='bi-person'
           hasArrow={true}
           menuPlacement='right-start'
           menuTrigger={`{default:'click', lg: 'hover'}`}
         >
-          <MenuItem to='/crafted/account/overview' title='Overview' hasBullet={true} />
-          <MenuItem to='/crafted/account/settings' title='Settings' hasBullet={true} />
+          <MenuItem
+            to='/crafted/account/overview'
+            title={lang === 'ar' ? 'نظرة عامة' : 'Overview'}
+            hasBullet={true}
+          />
+          <MenuItem
+            to='/crafted/account/settings'
+            title={lang === 'ar' ? 'الإعدادات' : 'Settings'}
+            hasBullet={true}
+          />
         </MenuInnerWithSub>
 
         {/* ERRORS */}
         <MenuInnerWithSub
-          title='Errors'
+          title={lang === 'ar' ? 'الأخطاء' : 'Errors'}
           to='/error'
           fontIcon='bi-sticky'
           hasArrow={true}
           menuPlacement='right-start'
           menuTrigger={`{default:'click', lg: 'hover'}`}
         >
-          <MenuItem to='/error/404' title='Error 404' hasBullet={true} />
-          <MenuItem to='/error/500' title='Error 500' hasBullet={true} />
+          <MenuItem
+            to='/error/404'
+            title={lang === 'ar' ? 'خطأ 404' : 'Error 404'}
+            hasBullet={true}
+          />
+          <MenuItem
+            to='/error/500'
+            title={lang === 'ar' ? 'خطأ 500' : 'Error 500'}
+            hasBullet={true}
+          />
         </MenuInnerWithSub>
 
         {/* Widgets */}
         <MenuInnerWithSub
-          title='Widgets'
+          title={lang === 'ar' ? 'الأدوات' : 'Widgets'}
           to='/crafted/widgets'
           fontIcon='bi-layers'
           hasArrow={true}
           menuPlacement='right-start'
           menuTrigger={`{default:'click', lg: 'hover'}`}
         >
-          <MenuItem to='/crafted/widgets/lists' title='Lists' hasBullet={true} />
-          <MenuItem to='/crafted/widgets/statistics' title='Statistics' hasBullet={true} />
-          <MenuItem to='/crafted/widgets/charts' title='Charts' hasBullet={true} />
-          <MenuItem to='/crafted/widgets/mixed' title='Mixed' hasBullet={true} />
-          <MenuItem to='/crafted/widgets/tables' title='Tables' hasBullet={true} />
-          <MenuItem to='/crafted/widgets/feeds' title='Feeds' hasBullet={true} />
+          <MenuItem
+            to='/crafted/widgets/lists'
+            title={lang === 'ar' ? 'القوائم' : 'Lists'}
+            hasBullet={true}
+          />
+          <MenuItem
+            to='/crafted/widgets/statistics'
+            title={lang === 'ar' ? 'الإحصائيات' : 'Statistics'}
+            hasBullet={true}
+          />
+          <MenuItem
+            to='/crafted/widgets/charts'
+            title={lang === 'ar' ? 'الرسوم البيانية' : 'Charts'}
+            hasBullet={true}
+          />
+          <MenuItem
+            to='/crafted/widgets/mixed'
+            title={lang === 'ar' ? 'مختلط' : 'Mixed'}
+            hasBullet={true}
+          />
+          <MenuItem
+            to='/crafted/widgets/tables'
+            title={lang === 'ar' ? 'الجداول' : 'Tables'}
+            hasBullet={true}
+          />
+          <MenuItem
+            to='/crafted/widgets/feeds'
+            title={lang === 'ar' ? 'المشاركات والتعليقات' : 'Feeds'}
+            hasBullet={true}
+          />
         </MenuInnerWithSub>
       </MenuInnerWithSub>
 
-      <MenuInnerWithSub title='Apps' to='/apps' menuPlacement='bottom-start' menuTrigger='click'>
+      <MenuInnerWithSub
+        title={lang === 'ar' ? 'التطبيقات' : 'Apps'}
+        to='/apps'
+        menuPlacement='bottom-start'
+        menuTrigger='click'
+      >
         {/* PAGES */}
         <MenuInnerWithSub
-          title='Chat'
+          title={lang === 'ar' ? 'المحادثة' : 'Chat'}
           to='/apps/chat'
           icon='/media/icons/duotune/communication/com012.svg'
           hasArrow={true}
           menuPlacement='right-start'
           menuTrigger={`{default:'click', lg: 'hover'}`}
         >
-          <MenuItem to='/apps/chat/private-chat' title='Private Chat' hasBullet={true} />
-          <MenuItem to='/apps/chat/group-chat' title='Group Chart' hasBullet={true} />
-          <MenuItem to='/apps/chat/drawer-chat' title='Drawer Chart' hasBullet={true} />
+          <MenuItem
+            to='/apps/chat/private-chat'
+            title={lang === 'ar' ? 'المحادثة الخاصة' : 'Private Chat'}
+            hasBullet={true}
+          />
+          <MenuItem
+            to='/apps/chat/group-chat'
+            title={lang === 'ar' ? 'المحادثة الجماعية' : 'Group Chat'}
+            hasBullet={true}
+          />
+          <MenuItem
+            to='/apps/chat/drawer-chat'
+            title={lang === 'ar' ? 'المحادثة التدرجية' : 'Drawer Chat'}
+            hasBullet={true}
+          />
         </MenuInnerWithSub>
         <MenuItem
           icon='/media/icons/duotune/general/gen051.svg'
           to='/apps/user-management/users'
-          title='User management'
+          title={lang === 'ar' ? 'إدارة المستخدم' : 'User Management'}
         />
       </MenuInnerWithSub>
 
       <MenuInnerWithSub
         isMega={true}
-        title='Mega menu'
+        title={lang === 'ar' ? 'القائمة الكبيرة' : 'Mega Menu'}
         to='/mega-menu'
         menuPlacement='bottom-start'
         menuTrigger='click'

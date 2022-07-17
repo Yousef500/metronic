@@ -1,20 +1,24 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import {KTSVG} from '../../../helpers'
-import {Dropdown1} from '../../content/dropdown/Dropdown1'
+import { useSelector } from 'react-redux'
+import { KTSVG } from '../../../helpers'
+import { Dropdown1 } from '../../content/dropdown/Dropdown1'
 
 type Props = {
   className: string
 }
 
 const ListsWidget5: React.FC<Props> = ({className}) => {
+  const {lang} = useSelector((state: any) => state.language)
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
       <div className='card-header align-items-center border-0 mt-4'>
         <h3 className='card-title align-items-start flex-column'>
-          <span className='fw-bolder mb-2 text-dark'>Activities</span>
-          <span className='text-muted fw-bold fs-7'>890,344 Sales</span>
+          <span className='fw-bolder mb-2 text-dark'>
+            {lang === 'ar' ? 'الأنشطة' : 'Activities'}
+          </span>
+          <span className='text-muted fw-bold fs-7'>890,344 {lang === 'ar' ? 'مبيعات' : 'Sales'}</span>
         </h3>
         <div className='card-toolbar'>
           {/* begin::Menu */}
@@ -192,4 +196,5 @@ const ListsWidget5: React.FC<Props> = ({className}) => {
   )
 }
 
-export {ListsWidget5}
+export { ListsWidget5 }
+

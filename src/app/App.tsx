@@ -9,6 +9,19 @@ import {AuthInit} from './modules/auth'
 const App = () => {
   const {lang} = useSelector((state: any) => state.language)
   useEffect(() => {
+    if (lang === 'ar') {
+      document.documentElement.setAttribute('direction', 'rtl')
+      document.documentElement.setAttribute('direction', 'rtl')
+      document.documentElement.setAttribute('dir', 'rtl')
+      document.documentElement.setAttribute('dir', 'rtl')
+      document.documentElement.style.direction = 'rtl'
+    } else {
+      document.documentElement.setAttribute('direction', 'ltr')
+      document.documentElement.setAttribute('direction', 'ltr')
+      document.documentElement.setAttribute('dir', 'ltr')
+      document.documentElement.setAttribute('dir', 'ltr')
+      document.documentElement.style.direction = 'ltr'
+    }
     document.documentElement.setAttribute('lang', lang)
   }, [lang])
 

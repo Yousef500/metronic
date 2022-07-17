@@ -1,11 +1,12 @@
 /* eslint-disable react/jsx-no-target-blank */
-import React from 'react'
 import {useIntl} from 'react-intl'
+import {useSelector} from 'react-redux'
 import {KTSVG} from '../../../helpers'
-import {AsideMenuItemWithSub} from './AsideMenuItemWithSub'
 import {AsideMenuItem} from './AsideMenuItem'
+import {AsideMenuItemWithSub} from './AsideMenuItemWithSub'
 
 export function AsideMenuMain() {
+  const {lang} = useSelector((state: any) => state.language)
   const intl = useIntl()
 
   return (
@@ -13,97 +14,181 @@ export function AsideMenuMain() {
       <AsideMenuItem
         to='/dashboard'
         icon='/media/icons/duotune/art/art002.svg'
-        title={intl.formatMessage({id: 'MENU.DASHBOARD'})}
+        title={lang === 'ar' ? 'لوحة المعلومات' : intl.formatMessage({id: 'MENU.DASHBOARD'})}
         fontIcon='bi-app-indicator'
       />
       <AsideMenuItem
         to='/builder'
         icon='/media/icons/duotune/general/gen019.svg'
-        title='Layout Builder'
+        title={lang === 'ar' ? 'منشيء التنسيق' : 'Layout Builder'}
         fontIcon='bi-layers'
       />
       <div className='menu-item'>
         <div className='menu-content pt-8 pb-2'>
-          <span className='menu-section text-muted text-uppercase fs-8 ls-1'>Crafted</span>
+          <span className='menu-section text-muted text-uppercase fs-8 ls-1 fw-bold'>
+            {lang === 'ar' ? 'المكونات الجاهزة' : 'Crafted'}
+          </span>
         </div>
       </div>
       <AsideMenuItemWithSub
         to='/crafted/pages'
-        title='Pages'
+        title={lang === 'ar' ? 'الصفحات' : 'Pages'}
         fontIcon='bi-archive'
         icon='/media/icons/duotune/general/gen022.svg'
       >
-        <AsideMenuItemWithSub to='/crafted/pages/profile' title='Profile' hasBullet={true}>
-          <AsideMenuItem to='/crafted/pages/profile/overview' title='Overview' hasBullet={true} />
-          <AsideMenuItem to='/crafted/pages/profile/projects' title='Projects' hasBullet={true} />
-          <AsideMenuItem to='/crafted/pages/profile/campaigns' title='Campaigns' hasBullet={true} />
-          <AsideMenuItem to='/crafted/pages/profile/documents' title='Documents' hasBullet={true} />
+        <AsideMenuItemWithSub
+          to='/crafted/pages/profile'
+          title={lang === 'ar' ? 'الملف الشخصي' : 'Profile'}
+          hasBullet={true}
+        >
+          <AsideMenuItem
+            to='/crafted/pages/profile/overview'
+            title={lang === 'ar' ? 'نظرة عامة' : 'Overview'}
+            hasBullet={true}
+          />
+          <AsideMenuItem
+            to='/crafted/pages/profile/projects'
+            title={lang === 'ar' ? 'المشاريع' : 'Projects'}
+            hasBullet={true}
+          />
+          <AsideMenuItem
+            to='/crafted/pages/profile/campaigns'
+            title={lang === 'ar' ? 'الحملات' : 'Campaigns'}
+            hasBullet={true}
+          />
+          <AsideMenuItem
+            to='/crafted/pages/profile/documents'
+            title={lang === 'ar' ? 'الوثائق' : 'Documents'}
+            hasBullet={true}
+          />
           <AsideMenuItem
             to='/crafted/pages/profile/connections'
-            title='Connections'
+            title={lang === 'ar' ? 'الارتباطات' : 'Connections'}
             hasBullet={true}
           />
         </AsideMenuItemWithSub>
 
-        <AsideMenuItemWithSub to='/crafted/pages/wizards' title='Wizards' hasBullet={true}>
+        <AsideMenuItemWithSub
+          to='/crafted/pages/wizards'
+          title={lang === 'ar' ? 'المساعدين' : 'Wizards'}
+          hasBullet={true}
+        >
           <AsideMenuItem
             to='/crafted/pages/wizards/horizontal'
-            title='Horizontal'
+            title={lang === 'ar' ? 'أفقي' : 'Horizontal'}
             hasBullet={true}
           />
-          <AsideMenuItem to='/crafted/pages/wizards/vertical' title='Vertical' hasBullet={true} />
+          <AsideMenuItem
+            to='/crafted/pages/wizards/vertical'
+            title={lang === 'ar' ? 'عمودي' : 'Vertical'}
+            hasBullet={true}
+          />
         </AsideMenuItemWithSub>
       </AsideMenuItemWithSub>
       <AsideMenuItemWithSub
         to='/crafted/accounts'
-        title='Accounts'
+        title={lang === 'ar' ? 'الحسابات' : 'Accounts'}
         icon='/media/icons/duotune/communication/com006.svg'
         fontIcon='bi-person'
       >
-        <AsideMenuItem to='/crafted/account/overview' title='Overview' hasBullet={true} />
-        <AsideMenuItem to='/crafted/account/settings' title='Settings' hasBullet={true} />
+        <AsideMenuItem
+          to='/crafted/account/overview'
+          title={lang === 'ar' ? 'نظرة عامة' : 'Overview'}
+          hasBullet={true}
+        />
+        <AsideMenuItem
+          to='/crafted/account/settings'
+          title={lang === 'ar' ? 'الإعدادات' : 'Settings'}
+          hasBullet={true}
+        />
       </AsideMenuItemWithSub>
       <AsideMenuItemWithSub
         to='/error'
-        title='Errors'
+        title={lang === 'ar' ? 'الأخطاء' : 'Errors'}
         fontIcon='bi-sticky'
         icon='/media/icons/duotune/general/gen040.svg'
       >
-        <AsideMenuItem to='/error/404' title='Error 404' hasBullet={true} />
-        <AsideMenuItem to='/error/500' title='Error 500' hasBullet={true} />
+        <AsideMenuItem
+          to='/error/404'
+          title={lang === 'ar' ? 'خطأ 404' : 'Error 404'}
+          hasBullet={true}
+        />
+        <AsideMenuItem
+          to='/error/500'
+          title={lang === 'ar' ? 'خطأ 500' : 'Error 500'}
+          hasBullet={true}
+        />
       </AsideMenuItemWithSub>
       <AsideMenuItemWithSub
         to='/crafted/widgets'
-        title='Widgets'
+        title={lang === 'ar' ? 'الأدوات' : 'Widgets'}
         icon='/media/icons/duotune/general/gen025.svg'
         fontIcon='bi-layers'
       >
-        <AsideMenuItem to='/crafted/widgets/lists' title='Lists' hasBullet={true} />
-        <AsideMenuItem to='/crafted/widgets/statistics' title='Statistics' hasBullet={true} />
-        <AsideMenuItem to='/crafted/widgets/charts' title='Charts' hasBullet={true} />
-        <AsideMenuItem to='/crafted/widgets/mixed' title='Mixed' hasBullet={true} />
-        <AsideMenuItem to='/crafted/widgets/tables' title='Tables' hasBullet={true} />
-        <AsideMenuItem to='/crafted/widgets/feeds' title='Feeds' hasBullet={true} />
+        <AsideMenuItem
+          to='/crafted/widgets/lists'
+          title={lang === 'ar' ? 'القوائم' : 'Lists'}
+          hasBullet={true}
+        />
+        <AsideMenuItem
+          to='/crafted/widgets/statistics'
+          title={lang === 'ar' ? 'الإحصائيات' : 'Statistics'}
+          hasBullet={true}
+        />
+        <AsideMenuItem
+          to='/crafted/widgets/charts'
+          title={lang === 'ar' ? 'الرسوم البيانية' : 'Charts'}
+          hasBullet={true}
+        />
+        <AsideMenuItem
+          to='/crafted/widgets/mixed'
+          title={lang === 'ar' ? 'مختلط' : 'Mixed'}
+          hasBullet={true}
+        />
+        <AsideMenuItem
+          to='/crafted/widgets/tables'
+          title={lang === 'ar' ? 'الجداول' : 'Tables'}
+          hasBullet={true}
+        />
+        <AsideMenuItem
+          to='/crafted/widgets/feeds'
+          title={lang === 'ar' ? 'المشاركات والتعليقات' : 'Feeds'}
+          hasBullet={true}
+        />
       </AsideMenuItemWithSub>
       <div className='menu-item'>
         <div className='menu-content pt-8 pb-2'>
-          <span className='menu-section text-muted text-uppercase fs-8 ls-1'>Apps</span>
+          <span className='menu-section text-muted text-uppercase fs-8 ls-1'>
+            {lang === 'ar' ? 'التطبيقات' : 'Apps'}
+          </span>
         </div>
       </div>
       <AsideMenuItemWithSub
         to='/apps/chat'
-        title='Chat'
+        title={lang === 'ar' ? 'المحادثة' : 'Chat'}
         fontIcon='bi-chat-left'
         icon='/media/icons/duotune/communication/com012.svg'
       >
-        <AsideMenuItem to='/apps/chat/private-chat' title='Private Chat' hasBullet={true} />
-        <AsideMenuItem to='/apps/chat/group-chat' title='Group Chart' hasBullet={true} />
-        <AsideMenuItem to='/apps/chat/drawer-chat' title='Drawer Chart' hasBullet={true} />
+        <AsideMenuItem
+          to='/apps/chat/private-chat'
+          title={lang === 'ar' ? 'المحادثة الخاصة' : 'Private Chat'}
+          hasBullet={true}
+        />
+        <AsideMenuItem
+          to='/apps/chat/group-chat'
+          title={lang === 'ar' ? 'المحادثة الجماعية' : 'Group Chat'}
+          hasBullet={true}
+        />
+        <AsideMenuItem
+          to='/apps/chat/drawer-chat'
+          title={lang === 'ar' ? 'المحادثة التدرجية' : 'Drawer Chat'}
+          hasBullet={true}
+        />
       </AsideMenuItemWithSub>
       <AsideMenuItem
         to='/apps/user-management/users'
         icon='/media/icons/duotune/general/gen051.svg'
-        title='User management'
+        title={lang === 'ar' ? 'إدارة المستخدم' : 'User Management'}
         fontIcon='bi-layers'
       />
       <div className='menu-item'>
@@ -120,7 +205,9 @@ export function AsideMenuMain() {
           <span className='menu-icon'>
             <KTSVG path='/media/icons/duotune/general/gen005.svg' className='svg-icon-2' />
           </span>
-          <span className='menu-title'>Changelog {process.env.REACT_APP_VERSION}</span>
+          <span className='menu-title'>
+            {lang === 'ar' ? 'سجل التغيرات' : 'Changelog'} {process.env.REACT_APP_VERSION}
+          </span>
         </a>
       </div>
     </>
